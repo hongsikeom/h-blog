@@ -1,0 +1,30 @@
+
+<%- include("partials/header"); -%>
+<div class="right">
+    <h1>New Post</h1><br>
+    <form id="new-post-form">
+      <div class="form-group">
+        <label>Subject</label>
+        <select class="form-select" name="subject" id="subject">
+          <option value="empty"> </option>
+          <option value="c">C</option>
+          <option value="cpp">C++</option>
+          <option value="csharp">C#</option>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="javascript">Javascript</option>
+          <option value="python">Python</option>
+          <option value="node-express">Node / Express</option>
+          <option value="mongo-mongoose">Mongo / Mongoose</option>
+          <option value="mysql">MySQL</option>
+        </select><br>
+        <label>Title</label>
+        <input class="form-control input-box" type="text" id="postTitle" name="postTitle">
+        <label>Post</label>
+        <textarea class="form-control input-box" id="postBody" name="postBody" rows="5" cols="30"></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit" name="button">Upload</button>
+    </form>
+  </div>
+
+<%- include("partials/footer"); -%>

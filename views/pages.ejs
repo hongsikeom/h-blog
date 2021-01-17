@@ -1,0 +1,22 @@
+
+<%- include("partials/header"); -%>
+  <div class="right">
+    <h2 style="display: inline-block;">Contents...</h2>
+    <a href="/compose"><button id="uploadBtn" class="btn btn-warning" style="margin-left: 5%;">Upload New Post</button></a>
+    <div class="posts">
+      <%  posts.forEach(function(post, index){ %>
+        <% createdDate = post.createdAt.toLocaleString('en-us', {second: 'numeric', minute: 'numeric', hour: 'numeric', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %>
+        <form class="post-form">
+          <div class="post">
+            <h1 style="display: inline-block;"><%=post.title%></h1>
+            <p><%= createdDate %></p>
+            <p>
+            <%=post.content.substring(0, 200) + " ..."%>
+            <a href="/menu/<%=subject%>/<%=post.slug%>">Read More</a>
+            </p>
+          </div>
+        </form>
+      <% }) %>
+    </div>
+  </div> 
+<%- include("partials/footer"); -%>

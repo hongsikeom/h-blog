@@ -1,0 +1,158 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+* {
+  box-sizing: content-box;
+}
+
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.search-box {
+  float: right;
+  margin-right: 20%;
+}
+
+#search-input {
+  width: 150px;
+  display: inline-block;
+}
+
+.navbar {
+  background: url("/img/header.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* background-color: #092532; */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+  height: 300px;
+}
+.header-container {
+  margin-top: 50px;
+}
+.navbar-brand {
+  font-size: 60px;
+  color: white !important;
+  margin-left: 100px !important;
+}
+
+.navbar-brand:hover {
+  color: #fdffbc !important;
+  transition: color 0.5s;
+}
+
+.navbar-nav {
+  margin-right: 100px !important;
+}
+.navbar-nav li a {
+  font-size: 20px;
+  color: white !important;
+}
+.navbar-nav li a:hover {
+  color: #fdffbc !important;
+  transition: color 0.5s;
+}
+
+.post {
+  margin-top: 20px;
+  border-top: 1px solid #092532;
+}
+/* .currentDiv-active {
+} */
+.currentDiv-inactive {
+  display: none;
+}
+
+.edittDiv-inactive {
+  display: none;
+}
+
+.edittDiv-active {
+  display: inline-block;
+}
+
+.form-group {
+  text-align: center;
+}
+
+.form-group input {
+  width: 300px;
+  height: 15px;
+  margin: auto;
+}
+
+.user-box input {
+  margin: auto;
+  width: 150px;
+}
+
+.footer-padding {
+  padding-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+.footer p {
+  margin-top: 25px;
+  font-size: 12px;
+  color: black;
+}
+
+/* Create a column layout with Flexbox */
+.row {
+  display: flex;
+}
+
+/* Left column (menu) */
+.left {
+  flex: 10%;
+  padding: 15px 0;
+  border-right: 2px solid #092532;
+}
+
+.left h2 {
+  padding-left: 8px;
+}
+
+/* Right column (page content) */
+.right {
+  text-align: center;
+  flex: 80%;
+  padding-left: 2%;
+}
+
+/* Style the navigation menu */
+#myMenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style the navigation links */
+#myMenu li a {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+#myMenu li a:hover {
+  background-color: #eee;
+}

@@ -1,0 +1,12 @@
+<%- include("partials/header"); -%>
+  <div class="right">
+    <form id="currentPost" class="currentPost" data-post="<%=JSON.stringify(post)%>">
+      <% createdDate = post.createdAt.toLocaleString('en-us', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %>
+      <h1><%=post.title%></h1>
+      <p><%= createdDate %></p>
+      <p><%=post.content%></p>
+      <button type="submit" id="editBtn" class="btn btn-primary">Edit</button>
+      <button type="submit" id="removeBtn" class="btn btn-primary">Remove</button>
+    </form>
+  </div>
+<%- include("partials/footer"); -%>
