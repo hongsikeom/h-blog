@@ -1,8 +1,9 @@
 const express = require('express');
-const router = express.Router();
 const blogController = require('../controllers/blogController');
 const userController = require('../controllers/userController');
 
+
+const router = express.Router();
 
 // root routes
 router.route("/").get(blogController.getHome);
@@ -19,6 +20,7 @@ router.route("/login")
 // CRUD routes
 router.route('/menu/:subject').get(blogController.getPage);
 router.route('/menu/:subject/:slug').get(blogController.getPost('get'));
+router.route('/find/:subject/:title').get(blogController.findPost);
 
 router.use(userController.userCheck);
 

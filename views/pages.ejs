@@ -3,6 +3,12 @@
   <div class="right">
     <h2 style="display: inline-block;">Contents...</h2>
     <a href="/compose"><button id="uploadBtn" class="btn btn-warning" style="margin-left: 5%;">Upload New Post</button></a>
+    <div class="search-box">
+      <form id="search-form" class="search-form">
+        <input class="form-control me-2" id='searchInput' type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" id="searchBtn" type="submit">Search</button>
+      </form>
+    </div>
     <div class="posts">
       <%  posts.forEach(function(post, index){ %>
         <% createdDate = post.createdAt.toLocaleString('en-us', {second: 'numeric', minute: 'numeric', hour: 'numeric', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %>

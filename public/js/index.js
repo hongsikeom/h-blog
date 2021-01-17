@@ -1,9 +1,9 @@
 import '@babel/polyfill';
-import { createPost, updatePost, removePost } from './postHandler.js';
+import { createPost, updatePost, removePost, findPost } from './postHandler.js';
 import { login } from './login';
 
 
-const searchForm = document.getElementById('search-post');
+const searchForm = document.getElementById('search-form');
 const newPostForm = document.getElementById('new-post-form');
 const loginForm = document.getElementById('login-form');
 const currentPost = document.getElementById('currentPost');
@@ -11,16 +11,10 @@ const editPost = document.getElementById('editPost');
 
 
 if (searchForm) {
-    searchForm.addEventListener('click', e => {
+    searchForm.addEventListener('submit', e => {
         e.preventDefault();
-        const input = document.getElementById('search-input').value.toLowerCase();
-        const posts = document.getElementsByClassName('post');
-
-        for (i = 0; i < posts.length; i++) {
-            posts[i].firstElementChild.innerHTML.toLowerCase() === input
-                ? posts[i].style.display = "inline-block"
-                : posts[i].style.display = "none";
-        }
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        location.assign(`${window.location.href}/${input}`);
     });
 }
 
@@ -55,7 +49,9 @@ if (currentPost) {
             location.assign(`/menu/${post.subject}/edit/${post.slug}`);
         } else if (e.submitter.innerHTML === 'Remove') {
             if (confirm('Do you really want to delete the post???') === true) {
-                removePost(post);
+                const subject = window.location.href.split('/')[4];
+                const slug = window.location.href.split('/')[5];
+                location.assign(`http://localhost:3000/menu/${subject}/remove/${slug}`);
             }
         }
     });

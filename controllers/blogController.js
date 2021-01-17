@@ -26,6 +26,17 @@ exports.getPage = catchAsync(async (req, res, next) => {
     });
 });
 
+exports.findPost = catchAsync(async (req, res, next) => {
+    const { subject, title } = req.params;
+    const model = returnModel(subject);
+    const posts = await model.find({ title: title });
+
+    res.status(200).render("pages", {
+        subject,
+        posts
+    })
+});
+
 
 exports.getPost = (mode) => catchAsync(async (req, res, next) => {
     const { subject, slug } = req.params;
@@ -38,6 +49,7 @@ exports.getPost = (mode) => catchAsync(async (req, res, next) => {
 
     if (mode === 'get') {
         res.status(200).render("post", {
+            user: req.user,
             post
         })
     } else if (mode === 'edit') {

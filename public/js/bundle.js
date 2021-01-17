@@ -8886,21 +8886,17 @@ var _postHandler = require("./postHandler.js");
 
 var _login = require("./login");
 
-var searchForm = document.getElementById('search-post');
+var searchForm = document.getElementById('search-form');
 var newPostForm = document.getElementById('new-post-form');
 var loginForm = document.getElementById('login-form');
 var currentPost = document.getElementById('currentPost');
 var editPost = document.getElementById('editPost');
 
 if (searchForm) {
-  searchForm.addEventListener('click', function (e) {
+  searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var input = document.getElementById('search-input').value.toLowerCase();
-    var posts = document.getElementsByClassName('post');
-
-    for (i = 0; i < posts.length; i++) {
-      posts[i].firstElementChild.innerHTML.toLowerCase() === input ? posts[i].style.display = "inline-block" : posts[i].style.display = "none";
-    }
+    var input = document.getElementById('searchInput').value.toLowerCase();
+    location.assign("".concat(window.location.href, "/").concat(input));
   });
 }
 
@@ -8932,7 +8928,9 @@ if (currentPost) {
       location.assign("/menu/".concat(post.subject, "/edit/").concat(post.slug));
     } else if (e.submitter.innerHTML === 'Remove') {
       if (confirm('Do you really want to delete the post???') === true) {
-        (0, _postHandler.removePost)(post);
+        var subject = window.location.href.split('/')[4];
+        var slug = window.location.href.split('/')[5];
+        location.assign("http://localhost:3000/menu/".concat(subject, "/remove/").concat(slug));
       }
     }
   });
