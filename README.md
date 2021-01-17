@@ -1,3 +1,4 @@
-# This is my own blog that stores various coding skills that i need to remember.
+# Welcome to Hongsik's web blog!
 
-This blog is being continuously developed.
+This is my own blog that stores various programming skills that i need to remember.
+This blog will be being continuously developed.
