@@ -8424,7 +8424,7 @@ var createPost = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://localhost:3000/compose',
+              url: '/compose',
               data: {
                 subject: subject,
                 title: title,
@@ -8474,7 +8474,7 @@ var updatePost = /*#__PURE__*/function () {
             _context2.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
-              url: "http://localhost:3000/menu/".concat(post.subject, "/update/").concat(post.slug),
+              url: "/menu/".concat(post.subject, "/update/").concat(post.slug),
               data: {
                 id: post._id,
                 subject: post.subject,
@@ -8524,7 +8524,7 @@ var removePost = /*#__PURE__*/function () {
             _context3.next = 3;
             return (0, _axios.default)({
               method: 'DELETE',
-              url: "http://localhost:3000/menu/".concat(post.subject, "/remove/").concat(post.slug),
+              url: "/menu/".concat(post.subject, "/remove/").concat(post.slug),
               data: {
                 id: post._id,
                 subject: post.subject
@@ -8587,7 +8587,7 @@ var login = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://localhost:3000/login',
+              url: '/login',
               data: {
                 email: email,
                 password: password
@@ -8930,7 +8930,7 @@ if (currentPost) {
       if (confirm('Do you really want to delete the post???') === true) {
         var subject = window.location.href.split('/')[4];
         var slug = window.location.href.split('/')[5];
-        location.assign("http://localhost:3000/menu/".concat(subject, "/remove/").concat(slug));
+        location.assign("/menu/".concat(subject, "/remove/").concat(slug));
       }
     }
   });

@@ -51,7 +51,7 @@ if (currentPost) {
             if (confirm('Do you really want to delete the post???') === true) {
                 const subject = window.location.href.split('/')[4];
                 const slug = window.location.href.split('/')[5];
-                location.assign(`http://localhost:3000/menu/${subject}/remove/${slug}`);
+                location.assign(`/menu/${subject}/remove/${slug}`);
             }
         }
     });

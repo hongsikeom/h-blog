@@ -96,7 +96,6 @@ exports.getError = (req, res) => {
 
 exports.createPost = catchAsync(async (req, res, next) => {
     const { subject, title, content } = req.body;
-    console.log(subject, title, content);
 
     const pModel = returnModel(subject);
 

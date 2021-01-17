@@ -5,7 +5,7 @@ export const createPost = async (subject, title, content) => {
     try {
         const res = await axios({
             method: 'POST',
-            url: 'http://localhost:3000/compose',
+            url: '/compose',
             data: {
                 subject,
                 title,
@@ -29,7 +29,7 @@ export const updatePost = async (post, title, content) => {
     try {
         const res = await axios({
             method: 'PATCH',
-            url: `http://localhost:3000/menu/${post.subject}/update/${post.slug}`,
+            url: `/menu/${post.subject}/update/${post.slug}`,
             data: {
                 id: post._id,
                 subject: post.subject,
@@ -52,7 +52,7 @@ export const removePost = async (post) => {
     try {
         const res = await axios({
             method: 'DELETE',
-            url: `http://localhost:3000/menu/${post.subject}/remove/${post.slug}`,
+            url: `/menu/${post.subject}/remove/${post.slug}`,
             data: {
                 id: post._id, subject: post.subject
             }
