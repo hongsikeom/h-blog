@@ -120,10 +120,12 @@ exports.removePost = catchAsync(async (req, res, next) => {
         return next(new AppError('No document found', 404));
     }
 
-    res.status(204).json({
-        stats: 'success',
-        data: null
-    })
+    res.status('/');
+
+    // res.status(204).json({
+    //     stats: 'success',
+    //     data: null
+    // });
 });
 
 exports.updatePost = catchAsync(async (req, res, next) => {
