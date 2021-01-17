@@ -8928,9 +8928,10 @@ if (currentPost) {
       location.assign("/menu/".concat(post.subject, "/edit/").concat(post.slug));
     } else if (e.submitter.innerHTML === 'Remove') {
       if (confirm('Do you really want to delete the post???') === true) {
-        var subject = window.location.href.split('/')[4];
-        var slug = window.location.href.split('/')[5];
-        location.assign("/menu/".concat(subject, "/remove/").concat(slug));
+        // const subject = window.location.href.split('/')[4];
+        // const slug = window.location.href.split('/')[5];
+        // location.assign(`/menu/${subject}/remove/${slug}`);
+        (0, _postHandler.removePost)(post);
       }
     }
   });

@@ -49,9 +49,10 @@ if (currentPost) {
             location.assign(`/menu/${post.subject}/edit/${post.slug}`);
         } else if (e.submitter.innerHTML === 'Remove') {
             if (confirm('Do you really want to delete the post???') === true) {
-                const subject = window.location.href.split('/')[4];
-                const slug = window.location.href.split('/')[5];
-                location.assign(`/menu/${subject}/remove/${slug}`);
+                // const subject = window.location.href.split('/')[4];
+                // const slug = window.location.href.split('/')[5];
+                // location.assign(`/menu/${subject}/remove/${slug}`);
+                removePost(post);
             }
         }
     });
