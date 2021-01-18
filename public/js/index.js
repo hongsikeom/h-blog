@@ -1,6 +1,6 @@
 import '@babel/polyfill';
-import { createPost, updatePost, removePost, findPost } from './postHandler.js';
-import { login } from './login';
+import { createPost, updatePost, removePost, getPost } from './postHandler.js';
+import { login, logout } from './login';
 
 
 const searchForm = document.getElementById('search-form');
@@ -8,7 +8,16 @@ const newPostForm = document.getElementById('new-post-form');
 const loginForm = document.getElementById('login-form');
 const currentPost = document.getElementById('currentPost');
 const editPost = document.getElementById('editPost');
+const logoutBtn = document.getElementById('logoutBtn');
+const readPost = document.getElementById('readPost');
 
+if (readPost) {
+    readPost.addEventListener('click', e => {
+        e.preventDefault();
+        const post = JSON.parse(readPost.dataset.post);
+        getPost(post);
+    });
+}
 
 if (searchForm) {
     searchForm.addEventListener('submit', e => {
@@ -29,6 +38,9 @@ if (newPostForm) {
     });
 }
 
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', logout);
+}
 
 if (loginForm) {
     loginForm.addEventListener('submit', e => {
@@ -49,9 +61,6 @@ if (currentPost) {
             location.assign(`/menu/${post.subject}/edit/${post.slug}`);
         } else if (e.submitter.innerHTML === 'Remove') {
             if (confirm('Do you really want to delete the post???') === true) {
-                // const subject = window.location.href.split('/')[4];
-                // const slug = window.location.href.split('/')[5];
-                // location.assign(`/menu/${subject}/remove/${slug}`);
                 removePost(post);
             }
         }
@@ -72,5 +81,5 @@ if (editPost) {
                 location.assign(`/menu/${post.subject}/${post.slug}`);
             }
         }
-    })
+    });
 }

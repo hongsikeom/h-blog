@@ -5,7 +5,7 @@ const globalErrorHandler = (err, req, res, next) => {
     err.satus = err.status || 'error';
 
     return res.status(err.statusCode).render('error', {
-        title: 'Something went wrong!',
+        title: 'Error!',
         msg: err.message
     });
 }

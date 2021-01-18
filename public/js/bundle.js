@@ -8403,7 +8403,7 @@ module.exports = require('./lib/axios');
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.removePost = exports.updatePost = exports.createPost = void 0;
+exports.removePost = exports.updatePost = exports.createPost = exports.getPost = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -8413,8 +8413,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var createPost = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(subject, title, content) {
+var getPost = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(post) {
     var res;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -8422,6 +8422,51 @@ var createPost = /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
+            return (0, _axios.default)({
+              method: 'GET',
+              url: "/menu/".concat(post.subject, "/").concat(post.slug)
+            });
+
+          case 3:
+            res = _context.sent;
+
+            if (res.status === 200) {
+              location.assign("/menu/".concat(post.subject, "/").concat(post.slug));
+            }
+
+            _context.next = 11;
+            break;
+
+          case 7:
+            _context.prev = 7;
+            _context.t0 = _context["catch"](0);
+            console.log(_context.t0.stack);
+            alert('Get Error...');
+
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[0, 7]]);
+  }));
+
+  return function getPost(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+exports.getPost = getPost;
+
+var createPost = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(subject, title, content) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
             return (0, _axios.default)({
               method: 'POST',
               url: '/compose',
@@ -8433,45 +8478,45 @@ var createPost = /*#__PURE__*/function () {
             });
 
           case 3:
-            res = _context.sent;
+            res = _context2.sent;
 
             if (res.status === 201) {
               location.assign("/menu/".concat(subject));
             }
 
-            _context.next = 11;
+            _context2.next = 11;
             break;
 
           case 7:
-            _context.prev = 7;
-            _context.t0 = _context["catch"](0);
-            console.log(_context.t0.stack);
+            _context2.prev = 7;
+            _context2.t0 = _context2["catch"](0);
+            console.log(_context2.t0.stack);
             alert('Create Error...');
 
           case 11:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee2, null, [[0, 7]]);
   }));
 
-  return function createPost(_x, _x2, _x3) {
-    return _ref.apply(this, arguments);
+  return function createPost(_x2, _x3, _x4) {
+    return _ref2.apply(this, arguments);
   };
 }();
 
 exports.createPost = createPost;
 
 var updatePost = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(post, title, content) {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(post, title, content) {
     var res;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
-            _context2.prev = 0;
-            _context2.next = 3;
+            _context3.prev = 0;
+            _context3.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
               url: "/menu/".concat(post.subject, "/update/").concat(post.slug),
@@ -8484,44 +8529,44 @@ var updatePost = /*#__PURE__*/function () {
             });
 
           case 3:
-            res = _context2.sent;
+            res = _context3.sent;
 
             if (res.status === 201) {
               location.assign("/menu/".concat(post.subject, "/").concat(post.slug));
             }
 
-            _context2.next = 10;
+            _context3.next = 10;
             break;
 
           case 7:
-            _context2.prev = 7;
-            _context2.t0 = _context2["catch"](0);
+            _context3.prev = 7;
+            _context3.t0 = _context3["catch"](0);
             alert('Upload Error...');
 
           case 10:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
       }
-    }, _callee2, null, [[0, 7]]);
+    }, _callee3, null, [[0, 7]]);
   }));
 
-  return function updatePost(_x4, _x5, _x6) {
-    return _ref2.apply(this, arguments);
+  return function updatePost(_x5, _x6, _x7) {
+    return _ref3.apply(this, arguments);
   };
 }();
 
 exports.updatePost = updatePost;
 
 var removePost = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(post) {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(post) {
     var res;
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+    return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context4.prev = _context4.next) {
           case 0:
-            _context3.prev = 0;
-            _context3.next = 3;
+            _context4.prev = 0;
+            _context4.next = 3;
             return (0, _axios.default)({
               method: 'DELETE',
               url: "/menu/".concat(post.subject, "/remove/").concat(post.slug),
@@ -8532,30 +8577,30 @@ var removePost = /*#__PURE__*/function () {
             });
 
           case 3:
-            res = _context3.sent;
+            res = _context4.sent;
 
             if (res.status === 204) {
               location.assign("/menu/".concat(post.subject));
             }
 
-            _context3.next = 10;
+            _context4.next = 10;
             break;
 
           case 7:
-            _context3.prev = 7;
-            _context3.t0 = _context3["catch"](0);
+            _context4.prev = 7;
+            _context4.t0 = _context4["catch"](0);
             alert('You are not logged in! Please log in to get access');
 
           case 10:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
       }
-    }, _callee3, null, [[0, 7]]);
+    }, _callee4, null, [[0, 7]]);
   }));
 
-  return function removePost(_x7) {
-    return _ref3.apply(this, arguments);
+  return function removePost(_x8) {
+    return _ref4.apply(this, arguments);
   };
 }();
 
@@ -8566,7 +8611,7 @@ exports.removePost = removePost;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.login = void 0;
+exports.logout = exports.login = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -8623,6 +8668,49 @@ var login = /*#__PURE__*/function () {
 }();
 
 exports.login = login;
+
+var logout = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(email, password) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return (0, _axios.default)({
+              method: 'GET',
+              url: '/logout'
+            });
+
+          case 3:
+            res = _context2.sent;
+
+            if (res.status === 200 || res.status === 201) {
+              location.assign('/');
+            }
+
+            _context2.next = 9;
+            break;
+
+          case 7:
+            _context2.prev = 7;
+            _context2.t0 = _context2["catch"](0);
+
+          case 9:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 7]]);
+  }));
+
+  return function logout(_x3, _x4) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+exports.logout = logout;
 },{"axios":"../../node_modules/axios/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -8891,6 +8979,16 @@ var newPostForm = document.getElementById('new-post-form');
 var loginForm = document.getElementById('login-form');
 var currentPost = document.getElementById('currentPost');
 var editPost = document.getElementById('editPost');
+var logoutBtn = document.getElementById('logoutBtn');
+var readPost = document.getElementById('readPost');
+
+if (readPost) {
+  readPost.addEventListener('click', function (e) {
+    e.preventDefault();
+    var post = JSON.parse(readPost.dataset.post);
+    (0, _postHandler.getPost)(post);
+  });
+}
 
 if (searchForm) {
   searchForm.addEventListener('submit', function (e) {
@@ -8908,6 +9006,10 @@ if (newPostForm) {
     var content = document.getElementById('postBody').value;
     (0, _postHandler.createPost)(subject, title, content);
   });
+}
+
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', _login.logout);
 }
 
 if (loginForm) {
@@ -8928,9 +9030,6 @@ if (currentPost) {
       location.assign("/menu/".concat(post.subject, "/edit/").concat(post.slug));
     } else if (e.submitter.innerHTML === 'Remove') {
       if (confirm('Do you really want to delete the post???') === true) {
-        // const subject = window.location.href.split('/')[4];
-        // const slug = window.location.href.split('/')[5];
-        // location.assign(`/menu/${subject}/remove/${slug}`);
         (0, _postHandler.removePost)(post);
       }
     }

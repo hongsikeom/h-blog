@@ -12,7 +12,7 @@ const pythonSchema = new mongoose.Schema({
     },
     subject: {
         type: String,
-        default: 'c'
+        default: 'pythone'
     },
     content: {
         type: String,
@@ -34,7 +34,7 @@ pythonSchema.pre('save', function (next) {
 
 
 pythonSchema.pre(/^find/, function (next) {
-    this.find({ isDeleted: { $ne: true } });
+    this.slug = slugify(`${this.title}-${Date.now()}`, { lower: true });
 
     this.populate('author');
     next();

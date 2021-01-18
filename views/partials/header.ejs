@@ -3,19 +3,23 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Hong's Programming Blog</title>
+  <title>H-BLOG</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/styles.css">
   <nav class="navbar navbar-default">
     <div class="container-fluid header-container">
       <div class="navbar-header">
-        <a href="/"><p class="navbar-brand">HONGSIK's BLOG</p></a>
+        <a href="/"><p class="navbar-brand">H - BLOG</p></a>
       </div>
         <ul class="nav navbar-nav navbar-right">
           <li id="home"><a href="/">HOME</a></li>
           <li id="about"><a href="/about">ABOUT ME</a></li>
-          <li id="contact"><a href="/login">LOG IN</a></li>
+          <%if (!locals.user) {%>
+          <li id="login"><a href="/login">LOG IN</a></li>
+          <%} else {%>
+          <li id="logout"><a id="logoutBtn" class="logoutBtn">LOG OUT</a></li>
+          {<% } %>}
         </ul>
     </div>
   </nav>

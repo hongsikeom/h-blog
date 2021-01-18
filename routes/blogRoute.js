@@ -5,16 +5,23 @@ const userController = require('../controllers/userController');
 
 const router = express.Router();
 
+router.use(userController.isLoggedIn);
+
 // root routes
 router.route("/").get(blogController.getHome);
 router.route("/about").get(blogController.getAbout);
 router.route("/contact").get(blogController.getContact);
 router.route("/error").get(blogController.getError);
 
+router.use(userController.isLoggedIn);
+
 // User Routes
 router.route("/login")
     .get(userController.getUserForm)
     .post(userController.login);
+
+router.route("/logout")
+    .get(userController.logout);
 
 
 // CRUD routes

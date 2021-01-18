@@ -12,7 +12,7 @@ const mongoSchema = new mongoose.Schema({
     },
     subject: {
         type: String,
-        default: 'c'
+        default: 'mongo-mongoose'
     },
     content: {
         type: String,
@@ -28,7 +28,7 @@ const mongoSchema = new mongoose.Schema({
 
 
 mongoSchema.pre('save', function (next) {
-    this.slug = slugify(this.title, { lower: true })
+    this.slug = slugify(`${this.title}-${Date.now()}`, { lower: true });
     next();
 });
 

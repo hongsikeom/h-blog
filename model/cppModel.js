@@ -28,7 +28,7 @@ const cppSchema = new mongoose.Schema({
 
 
 cppSchema.pre('save', function (next) {
-    this.slug = slugify(this.title, { lower: true })
+    this.slug = slugify(`${this.title}-${Date.now()}`, { lower: true });
     next();
 });
 

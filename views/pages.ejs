@@ -1,27 +1,30 @@
 
 <%- include("partials/header"); -%>
   <div class="right">
-    <h2 style="display: inline-block;">Contents...</h2>
-    <a href="/compose"><button id="uploadBtn" class="btn btn-warning" style="margin-left: 5%;">Upload New Post</button></a>
-    <div class="search-box">
-      <form id="search-form" class="search-form">
-        <input class="form-control me-2" id='searchInput' type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" id="searchBtn" type="submit">Search</button>
-      </form>
+    <div class="page-header">
+      <a href="/compose" style="margin-left: 5%; display: inline-block;"><button id="uploadBtn" class="btn btn-warning">New Post</button></a>
+      <div class="search-box" style="margin-left: 5%; display: inline-block;">
+        <form id="search-form" class="search-form">
+          <input class="form-control me-2" id='searchInput' type="search" placeholder="Search title..." 
+          aria-label="Search" style="width:120px !important; display: inline-block;">
+          <button class="btn btn-outline-success" id="searchBtn" type="submit">Search</button>
+        </form>
+    </div>
     </div>
     <div class="posts">
       <%  posts.forEach(function(post, index){ %>
         <% createdDate = post.createdAt.toLocaleString('en-us', {second: 'numeric', minute: 'numeric', hour: 'numeric', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %>
-        <form class="post-form">
+        <div class="post-form">
           <div class="post">
             <h1 style="display: inline-block;"><%=post.title%></h1>
             <p><%= createdDate %></p>
             <p>
             <%=post.content.substring(0, 200) + " ..."%>
-            <a href="/menu/<%=subject%>/<%=post.slug%>">Read More</a>
+            <a id="readPost" data-post="<%=JSON.stringify(post)%>"style="cursor: pointer;">Read More</a>
+            <!-- <a id="readPost" href="/menu/<%=post.subject%>/<%=post.slug%>">Read More</a> -->
             </p>
           </div>
-        </form>
+        </div>
       <% }) %>
     </div>
   </div> 

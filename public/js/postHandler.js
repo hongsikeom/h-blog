@@ -1,6 +1,24 @@
 import axios from 'axios';
 
 
+export const getPost = async (post) => {
+    try {
+        const res = await axios({
+            method: 'GET',
+            url: `/menu/${post.subject}/${post.slug}`
+        });
+
+        if (res.status === 200) {
+            location.assign(`/menu/${post.subject}/${post.slug}`);
+        }
+
+    } catch (err) {
+        console.log(err.stack);
+        alert('Get Error...');
+    }
+};
+
+
 export const createPost = async (subject, title, content) => {
     try {
         const res = await axios({

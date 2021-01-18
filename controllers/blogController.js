@@ -49,7 +49,6 @@ exports.getPost = (mode) => catchAsync(async (req, res, next) => {
 
     if (mode === 'get') {
         res.status(200).render("post", {
-            user: req.user,
             post
         })
     } else if (mode === 'edit') {
@@ -69,8 +68,6 @@ exports.getAbout = catchAsync(async (req, res, next) => {
             about: about[0].about
         });
 });
-
-
 
 
 exports.getContact = catchAsync(async (req, res, next) => {
