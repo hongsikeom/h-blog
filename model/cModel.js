@@ -32,7 +32,7 @@ cSchema.pre('save', function (next) {
 });
 
 cSchema.pre(/^find/, function (next) {
-    this.find({ isDeleted: { $ne: true } });
+    this.sort({ createdAt: -1 });
 
     this.populate('author');
     next();

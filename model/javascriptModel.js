@@ -33,7 +33,7 @@ javascriptSchema.pre('save', function (next) {
 });
 
 javascriptSchema.pre(/^find/, function (next) {
-    this.find({ isDeleted: { $ne: true } });
+    this.sort({ createdAt: -1 });
 
     this.populate('author');
     next();

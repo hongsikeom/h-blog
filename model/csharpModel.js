@@ -34,7 +34,7 @@ csharpSchema.pre('save', function (next) {
 
 
 csharpSchema.pre(/^find/, function (next) {
-    this.find({ isDeleted: { $ne: true } });
+    this.sort({ createdAt: -1 });
 
     this.populate('author');
     next();

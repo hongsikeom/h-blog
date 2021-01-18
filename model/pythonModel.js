@@ -34,7 +34,7 @@ pythonSchema.pre('save', function (next) {
 
 
 pythonSchema.pre(/^find/, function (next) {
-    this.slug = slugify(`${this.title}-${Date.now()}`, { lower: true });
+    this.sort({ createdAt: -1 });
 
     this.populate('author');
     next();

@@ -34,7 +34,7 @@ nodeSchema.pre('save', function (next) {
 
 
 nodeSchema.pre(/^find/, function (next) {
-    this.find({ isDeleted: { $ne: true } });
+    this.sort({ createdAt: -1 });
 
     this.populate('author');
     next();

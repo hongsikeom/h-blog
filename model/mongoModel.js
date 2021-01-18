@@ -34,7 +34,7 @@ mongoSchema.pre('save', function (next) {
 
 
 mongoSchema.pre(/^find/, function (next) {
-    this.find({ isDeleted: { $ne: true } });
+    this.sort({ createdAt: -1 });
 
     this.populate('author');
     next();
