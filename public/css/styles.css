@@ -19,26 +19,30 @@ textarea {
   overflow: auto;
 }
 
+h2 {
+  margin: 35px 0;
+}
+
 .container-fluid {
   padding-top: 70px;
   padding-bottom: 70px;
 }
 
 .about {
-  padding-top: 70px;
-  padding-bottom: 70px;
+  background: url("/img/header.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 20px;
+  letter-spacing: 2px;
 }
 
-.me-about {
-  background-color: #f3f2da;
-}
-
-.school-about {
-  background-color: #bedbbb;
-}
-
-.skill-about {
-  background-color: #d0e8f2;
+.about h1 {
+  font-size: 6rem;
 }
 
 .search-box {
@@ -82,6 +86,32 @@ textarea {
   position: relative;
   padding: 0;
 }
+
+.login-container {
+  background: url("/img/header.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  height: 400px;
+  padding-top: 0%;
+}
+
+.home-container {
+  background: url("/img/header.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  padding: 10% 0;
+}
+
+.body-container {
+  margin: auto;
+}
+
 .navbar-brand {
   font-size: 60px;
   color: white !important;
@@ -184,6 +214,7 @@ textarea {
 .left {
   flex: 10%;
   padding: 15px 0;
+  text-align: center;
   border-right: 2px solid #092532;
 }
 
@@ -218,5 +249,21 @@ textarea {
 @media only screen and (max-width: 600px) {
   .right {
     width: 80%;
+  }
+
+  .home-container {
+    padding: 45% 0;
+  }
+
+  .login-container {
+    padding-top: 25%;
+  }
+
+  .about {
+    font-size: 16px;
+  }
+
+  .about h1 {
+    font-size: 40px;
   }
 }
