@@ -13,20 +13,16 @@
           aria-label="Search" style="width:120px !important; display: inline-block;">
           <button class="btn btn-outline-success" id="searchBtn" type="submit">Search</button>
         </form>
-    </div>
+      </div>
     </div>
     <div class="posts">
       <%  posts.forEach(function(post, index){ %>
         <% createdDate = post.createdAt.toLocaleString('en-us', {second: 'numeric', minute: 'numeric', hour: 'numeric', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %>
-        <div class="post-form">
-          <div class="post">
-            <h1 style="display: inline-block;"><%=post.title%></h1>
-            <p><%= createdDate %></p>
-            <p>
-            <textarea readonly rows="2" cols="100" wrap="hard" ><%=post.content.substring(0, 200) + " ..."%></textarea><br>
-            <a id="readPost" data-post="<%=JSON.stringify(post)%>"style="cursor: pointer;">Read More</a>
-            </p>
-          </div>
+        <div class="post">
+          <h1 style="display: inline-block;"><%=post.title%></h1>
+          <p><%= createdDate %></p>
+          <textarea readonly rows="2" cols="100" wrap="hard" ><%=post.content.substring(0, 200) + " ..."%></textarea><br>
+          <a id="readPost" class="readPost" style="cursor: pointer;" data-post="<%=JSON.stringify(post)%>">Read More</a>           
         </div>
       <% }) %>
     </div>

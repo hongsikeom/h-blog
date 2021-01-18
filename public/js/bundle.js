@@ -8982,14 +8982,16 @@ var loginForm = document.getElementById('login-form');
 var currentPost = document.getElementById('currentPost');
 var editPost = document.getElementById('editPost');
 var logoutBtn = document.getElementById('logoutBtn');
-var readPost = document.getElementById('readPost');
+var readPost = document.getElementsByClassName('readPost');
 
 if (readPost) {
-  readPost.addEventListener('click', function (e) {
-    e.preventDefault();
-    var post = JSON.parse(readPost.dataset.post);
-    (0, _postHandler.getPost)(post);
-  });
+  for (var i = 0; i < readPost.length; i++) {
+    readPost[i].addEventListener('click', function (e) {
+      e.preventDefault();
+      var post = JSON.parse(e.target.dataset.post);
+      (0, _postHandler.getPost)(post);
+    });
+  }
 }
 
 if (searchForm) {

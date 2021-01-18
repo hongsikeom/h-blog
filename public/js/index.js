@@ -9,15 +9,18 @@ const loginForm = document.getElementById('login-form');
 const currentPost = document.getElementById('currentPost');
 const editPost = document.getElementById('editPost');
 const logoutBtn = document.getElementById('logoutBtn');
-const readPost = document.getElementById('readPost');
+const readPost = document.getElementsByClassName('readPost');
 
 if (readPost) {
-    readPost.addEventListener('click', e => {
-        e.preventDefault();
-        const post = JSON.parse(readPost.dataset.post);
-        getPost(post);
-    });
+    for (let i = 0; i < readPost.length; i++) {
+        readPost[i].addEventListener('click', e => {
+            e.preventDefault();
+            const post = JSON.parse(e.target.dataset.post);
+            getPost(post);
+        });
+    }
 }
+
 
 if (searchForm) {
     searchForm.addEventListener('submit', e => {

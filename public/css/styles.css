@@ -29,12 +29,6 @@ h2 {
 }
 
 .about {
-  background: url("/img/header.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  color: white;
   padding-top: 30px;
   padding-bottom: 30px;
   font-size: 20px;
@@ -88,23 +82,11 @@ h2 {
 }
 
 .login-container {
-  background: url("/img/header.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  color: white;
   height: 400px;
   padding-top: 0%;
 }
 
 .home-container {
-  background: url("/img/header.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  color: white;
   padding: 10% 0;
 }
 
