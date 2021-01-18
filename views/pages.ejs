@@ -19,7 +19,7 @@
             <h1 style="display: inline-block;"><%=post.title%></h1>
             <p><%= createdDate %></p>
             <p>
-            <textarea readonly disabled rows="15" cols="150" wrap="hard" ><%=post.content.substring(0, 200) + " ..."%></textarea>
+            <textarea readonly disabled rows="2" cols="150" wrap="hard" ><%=post.content.substring(0, 200) + " ..."%></textarea>
             <a id="readPost" data-post="<%=JSON.stringify(post)%>"style="cursor: pointer;">Read More</a>
             </p>
           </div>
