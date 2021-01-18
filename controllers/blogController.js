@@ -27,9 +27,9 @@ exports.getPage = catchAsync(async (req, res, next) => {
 });
 
 exports.findPost = catchAsync(async (req, res, next) => {
-    const { subject, title } = req.params;
+    const { subject, search } = req.params;
     const model = returnModel(subject);
-    const posts = await model.find({ title: title });
+    const posts = await model.find({ $or: [{ title: { $regex: search, $options: "i" } }, { content: { $regex: search, $options: "i" } }] });
 
     res.status(200).render("pages", {
         subject,

@@ -27,7 +27,7 @@ router.route("/logout")
 // CRUD routes
 router.route('/menu/:subject').get(blogController.getPage);
 router.route('/menu/:subject/:slug').get(blogController.getPost('get'));
-router.route('/find/:subject/:title').get(blogController.findPost);
+router.route('/find/:subject/:search').get(blogController.findPost);
 
 router.use(userController.userCheck);
 

@@ -5,6 +5,7 @@ html {
 
 * {
   box-sizing: content-box;
+  max-width: 100%;
 }
 
 hr {
@@ -73,7 +74,7 @@ textarea {
   margin-bottom: 0;
   font-size: 12px;
   letter-spacing: 5px;
-  height: 270px;
+  height: 15%;
   position: relative;
 }
 .header-container {
@@ -176,6 +177,8 @@ textarea {
 
 .row {
   display: flex;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .left {
@@ -190,9 +193,9 @@ textarea {
 
 .right {
   text-align: center;
+  width: 100%;
   flex: 80%;
   padding-left: 2%;
-  position: relative;
 }
 
 #myMenu {
@@ -210,4 +213,10 @@ textarea {
 
 #myMenu li a:hover {
   background-color: #eee;
+}
+
+@media only screen and (max-width: 600px) {
+  .right {
+    width: 80%;
+  }
 }

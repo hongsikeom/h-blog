@@ -8994,7 +8994,8 @@ if (searchForm) {
   searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var input = document.getElementById('searchInput').value.toLowerCase();
-    location.assign("".concat(window.location.href, "/").concat(input));
+    var subject = searchForm.dataset.subject;
+    location.assign("/find/".concat(subject, "/").concat(input));
   });
 }
 
@@ -9002,9 +9003,14 @@ if (newPostForm) {
   newPostForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var subject = document.getElementById('subject').value;
-    var title = document.getElementById('postTitle').value;
-    var content = document.getElementById('postBody').value;
-    (0, _postHandler.createPost)(subject, title, content);
+
+    if (subject === 'empty') {
+      alert("Please choose one of the subjects!");
+    } else {
+      var title = document.getElementById('postTitle').value;
+      var content = document.getElementById('postBody').value;
+      (0, _postHandler.createPost)(subject, title, content);
+    }
   });
 }
 
@@ -9080,7 +9086,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57828" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57173" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
