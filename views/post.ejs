@@ -5,8 +5,13 @@
       <h1><%=post.title%></h1>
       <p><%= createdDate %></p>
       <textarea readonly rows="15" cols="100" wrap="hard" class="post-textarea"><%=post.content%></textarea><br>
-      <button type="submit" id="editBtn" class="btn btn-primary">Edit</button>
-      <button type="submit" id="removeBtn" class="btn btn-primary">Remove</button>
+      <% if (locals.user) { %>
+        <button type="submit" id="editBtn" class="btn btn-primary">Edit</button>
+        <button type="submit" id="removeBtn" class="btn btn-primary">Remove</button>
+      <% } else { %>
+      <button type="submit" id="editBtn" class="btn btn-primary" disabled>Edit</button>
+      <button type="submit" id="removeBtn" class="btn btn-primary" disabled>Remove</button>
+      <% } %>
     </form>
   </div>
 <%- include("partials/footer"); -%>

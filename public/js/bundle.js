@@ -8974,6 +8974,8 @@ var _postHandler = require("./postHandler.js");
 
 var _login = require("./login");
 
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
+
 var searchForm = document.getElementById('search-form');
 var newPostForm = document.getElementById('new-post-form');
 var loginForm = document.getElementById('login-form');
@@ -8994,7 +8996,12 @@ if (searchForm) {
   searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var input = document.getElementById('searchInput').value.toLowerCase();
-    var subject = searchForm.dataset.subject;
+
+    if (input === '') {
+      input = (_readOnlyError("input"), ' ');
+    }
+
+    var subject = window.location.href.split('/')[4];
     location.assign("/find/".concat(subject, "/").concat(input));
   });
 }

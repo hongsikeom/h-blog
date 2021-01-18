@@ -2,9 +2,13 @@
 <%- include("partials/header"); -%>
   <div class="right">
     <div class="page-header">
-      <a href="/compose" style="margin-left: 5%; display: inline-block;"><button id="uploadBtn" class="btn btn-warning">New Post</button></a>
+      <% if (locals.user) {%>
+        <a href="/compose" style="margin-left: 5%; display: inline-block;"><button id="uploadBtn" class="btn btn-warning">New Post</button></a>
+      <% } else { %>
+        <a href="/compose" style="margin-left: 5%; display: inline-block;"><button id="uploadBtn" class="btn btn-warning" disabled>New Post</button></a>
+      <% } %>
       <div class="search-box" style="margin-left: 5%; display: inline-block;">
-        <form id="search-form" class="search-form" data-subject="<%=posts[0].subject%>">
+        <form id="search-form" class="search-form">
           <input class="form-control me-2" id='searchInput' type="search" placeholder="Search title..." 
           aria-label="Search" style="width:120px !important; display: inline-block;">
           <button class="btn btn-outline-success" id="searchBtn" type="submit">Search</button>

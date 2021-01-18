@@ -49,10 +49,12 @@ exports.getPost = (mode) => catchAsync(async (req, res, next) => {
 
     if (mode === 'get') {
         res.status(200).render("post", {
+            user: req.user,
             post
         })
     } else if (mode === 'edit') {
         res.status(200).render("edit", {
+            user: req.user,
             post
         })
     }

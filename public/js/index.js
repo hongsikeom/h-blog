@@ -1,5 +1,5 @@
 import '@babel/polyfill';
-import { createPost, updatePost, removePost, getPost, findPost } from './postHandler.js';
+import { createPost, updatePost, removePost, getPost } from './postHandler.js';
 import { login, logout } from './login';
 
 
@@ -23,7 +23,10 @@ if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
         const input = document.getElementById('searchInput').value.toLowerCase();
-        const subject = searchForm.dataset.subject;
+        if (input === '') {
+            input = ' ';
+        }
+        const subject = window.location.href.split('/')[4];
         location.assign(`/find/${subject}/${input}`);
     });
 }
