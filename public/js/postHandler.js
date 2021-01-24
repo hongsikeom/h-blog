@@ -47,7 +47,7 @@ export const updatePost = async (post, title, content) => {
     try {
         const res = await axios({
             method: 'PATCH',
-            url: `/menu/${post.subject}/update/${post.slug}`,
+            url: `/menu/${post.subject}/${post.slug}`,
             data: {
                 id: post._id,
                 subject: post.subject,
@@ -70,7 +70,7 @@ export const removePost = async (post) => {
     try {
         const res = await axios({
             method: 'DELETE',
-            url: `/menu/${post.subject}/remove/${post.slug}`,
+            url: `/menu/${post.subject}/${post.slug}`,
             data: {
                 id: post._id, subject: post.subject
             }
@@ -80,7 +80,6 @@ export const removePost = async (post) => {
         if (res.status === 204) {
             location.assign(`/menu/${post.subject}`);
         }
-
 
     } catch (err) {
         alert('You are not logged in! Please log in to get access');

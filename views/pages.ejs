@@ -22,7 +22,7 @@
           <h1 style="display: inline-block;"><%=post.title%></h1>
           <p><%= createdDate %></p>
           <textarea readonly rows="2" cols="100" wrap="hard" ><%=post.content.substring(0, 200) + " ..."%></textarea><br>
-          <a id="readPost" class="readPost" style="cursor: pointer;" data-post="<%=JSON.stringify(post)%>">Read More</a>           
+          <a id="readPost" class="readPost" style="cursor: pointer; color:#ffa45b;" data-post="<%=JSON.stringify(post)%>">Read More</a>           
         </div>
       <% }) %>
     </div>

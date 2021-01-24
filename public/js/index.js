@@ -25,12 +25,12 @@ if (readPost) {
 if (searchForm) {
     searchForm.addEventListener('submit', e => {
         e.preventDefault();
-        const input = document.getElementById('searchInput').value.toLowerCase();
-        if (input === '') {
-            input = ' ';
+        const content = document.getElementById('searchInput').value.toLowerCase();
+        if (content === '') {
+            content = ' ';
         }
-        const subject = window.location.href.split('/')[4];
-        location.assign(`/find/${subject}/${input}`);
+        location.assign(`${window.location.pathname}?content=${content}`);
+        document.getElementById('searchInput').value = "";
     });
 }
 
@@ -69,7 +69,7 @@ if (currentPost) {
         const post = JSON.parse(currentPost.dataset.post);
 
         if (e.submitter.innerHTML === 'Edit') {
-            location.assign(`/menu/${post.subject}/edit/${post.slug}`);
+            location.assign(`/menu/${post.subject}/${post.slug}?mode=edit`);
         } else if (e.submitter.innerHTML === 'Remove') {
             if (confirm('Do you really want to delete the post???') === true) {
                 removePost(post);

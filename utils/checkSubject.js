@@ -8,6 +8,8 @@ const PYTHON = require('../model/pythonModel');
 const NODE = require('../model/nodeModel');
 const MYSQL = require('../model/mysqlModel');
 const MONGO = require('../model/mongoModel');
+const LINUX = require('../model/linuxModel');
+const ANDROID = require('../model/androidModel');
 
 
 
@@ -33,6 +35,10 @@ const returnModel = (subject) => {
             return MONGO;
         case "mysql":
             return MYSQL;
+        case "linux":
+            return LINUX;
+        case "android":
+            return ANDROID;
     }
 }
 

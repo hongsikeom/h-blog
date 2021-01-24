@@ -34,7 +34,6 @@ cssSchema.pre('save', function (next) {
 
 cssSchema.pre(/^find/, function (next) {
     this.sort({ createdAt: -1 });
-
     this.populate('author');
     next();
 });

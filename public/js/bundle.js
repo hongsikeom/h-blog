@@ -8519,7 +8519,7 @@ var updatePost = /*#__PURE__*/function () {
             _context3.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
-              url: "/menu/".concat(post.subject, "/update/").concat(post.slug),
+              url: "/menu/".concat(post.subject, "/").concat(post.slug),
               data: {
                 id: post._id,
                 subject: post.subject,
@@ -8569,7 +8569,7 @@ var removePost = /*#__PURE__*/function () {
             _context4.next = 3;
             return (0, _axios.default)({
               method: 'DELETE',
-              url: "/menu/".concat(post.subject, "/remove/").concat(post.slug),
+              url: "/menu/".concat(post.subject, "/").concat(post.slug),
               data: {
                 id: post._id,
                 subject: post.subject
@@ -8997,14 +8997,14 @@ if (readPost) {
 if (searchForm) {
   searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var input = document.getElementById('searchInput').value.toLowerCase();
+    var content = document.getElementById('searchInput').value.toLowerCase();
 
-    if (input === '') {
-      input = (_readOnlyError("input"), ' ');
+    if (content === '') {
+      content = (_readOnlyError("content"), ' ');
     }
 
-    var subject = window.location.href.split('/')[4];
-    location.assign("/find/".concat(subject, "/").concat(input));
+    location.assign("".concat(window.location.pathname, "?content=").concat(content));
+    document.getElementById('searchInput').value = "";
   });
 }
 
@@ -9042,7 +9042,7 @@ if (currentPost) {
     var post = JSON.parse(currentPost.dataset.post);
 
     if (e.submitter.innerHTML === 'Edit') {
-      location.assign("/menu/".concat(post.subject, "/edit/").concat(post.slug));
+      location.assign("/menu/".concat(post.subject, "/").concat(post.slug, "?mode=edit"));
     } else if (e.submitter.innerHTML === 'Remove') {
       if (confirm('Do you really want to delete the post???') === true) {
         (0, _postHandler.removePost)(post);
@@ -9095,7 +9095,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57173" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61957" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

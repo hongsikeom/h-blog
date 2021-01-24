@@ -1,7 +1,7 @@
 {
-  "name": "ejs-challenge",
+  "name": "hblog",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is my own blog that stores various programming skills that i need to remember.\r This blog will be being continuously developed.",
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
@@ -9,7 +9,7 @@
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --public-url /js --out-file bundle.js",
     "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --public-url /js --out-file bundle.js"
   },
-  "author": "",
+  "author": "Hongsik Eom",
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -31,5 +31,13 @@
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hongsikeom/h-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hongsikeom/h-blog/issues"
+  },
+  "homepage": "https://github.com/hongsikeom/h-blog#readme"
 }

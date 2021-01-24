@@ -15,10 +15,20 @@ exports.getCompose = (req, res) => {
 };
 
 exports.getPage = catchAsync(async (req, res, next) => {
-    const subject = req.params.subject;
+    const { subject } = req.params;
+    const { content } = req.query;
+
+    let posts;
     const model = returnModel(subject);
 
-    const posts = await model.find();
+    if (content) {  
+        posts = await model.find({
+            $or: [{ title: { $regex: content, $options: "i" } },
+            { content: { $regex: content, $options: "i" } }]
+        });
+    } else {
+        posts = await model.find();
+    }
 
     res.status(200).render("pages", {
         subject,
@@ -26,20 +36,12 @@ exports.getPage = catchAsync(async (req, res, next) => {
     });
 });
 
-exports.findPost = catchAsync(async (req, res, next) => {
-    const { subject, search } = req.params;
-    const model = returnModel(subject);
-    const posts = await model.find({ $or: [{ title: { $regex: search, $options: "i" } }, { content: { $regex: search, $options: "i" } }] });
-
-    res.status(200).render("pages", {
-        subject,
-        posts
-    })
-});
 
 
-exports.getPost = (mode) => catchAsync(async (req, res, next) => {
+exports.getPost = catchAsync(async (req, res, next) => {
     const { subject, slug } = req.params;
+    const { mode } = req.query;
+
     const model = returnModel(subject);
     const post = await model.findOne({ slug: slug });
 
@@ -47,16 +49,18 @@ exports.getPost = (mode) => catchAsync(async (req, res, next) => {
         return next(new AppError("No post exists", 404));
     }
 
-    if (mode === 'get') {
+    if (mode === undefined) {
         res.status(200).render("post", {
             user: req.user,
             post
         })
-    } else if (mode === 'edit') {
-        res.status(200).render("edit", {
-            user: req.user,
-            post
-        })
+    } else {
+        if (mode === 'edit') {
+            res.status(200).render('edit', {
+                user: req.user,
+                post
+            });
+        }
     }
 });
 

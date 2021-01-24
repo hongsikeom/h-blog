@@ -28,7 +28,7 @@ const nodeSchema = new mongoose.Schema({
 
 
 nodeSchema.pre('save', function (next) {
-    this.slug = slugify(`${this.title}-${Date.now()}`, { lower: true });
+    this.slug = slugify(`${this.subject}-${Date.now()}`, { lower: true });
     next();
 });
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 
-const cppSchema = new mongoose.Schema({
+const androidSchema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.ObjectId,
         ref: 'User'
@@ -12,7 +12,7 @@ const cppSchema = new mongoose.Schema({
     },
     subject: {
         type: String,
-        default: 'cpp'
+        default: 'pythone'
     },
     content: {
         type: String,
@@ -27,18 +27,19 @@ const cppSchema = new mongoose.Schema({
 });
 
 
-cppSchema.pre('save', function (next) {
+androidSchema.pre('save', function (next) {
     this.slug = slugify(`${this.subject}-${Date.now()}`, { lower: true });
     next();
 });
 
-cppSchema.pre(/^find/, function (next) {
+
+androidSchema.pre(/^find/, function (next) {
     this.sort({ createdAt: -1 });
 
     this.populate('author');
     next();
 });
 
-const CPP = mongoose.model('Cpp', cppSchema);
+const ANDROID = mongoose.model('Android', androidSchema);
 
-module.exports = CPP;
+module.exports = ANDROID;
