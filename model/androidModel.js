@@ -12,7 +12,7 @@ const androidSchema = new mongoose.Schema({
     },
     subject: {
         type: String,
-        default: 'pythone'
+        default: 'android'
     },
     content: {
         type: String,

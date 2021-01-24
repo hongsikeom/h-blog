@@ -12,7 +12,7 @@ const linuxSchema = new mongoose.Schema({
     },
     subject: {
         type: String,
-        default: 'pythone'
+        default: 'linux'
     },
     content: {
         type: String,
