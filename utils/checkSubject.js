@@ -10,6 +10,7 @@ const MYSQL = require('../model/mysqlModel');
 const MONGO = require('../model/mongoModel');
 const LINUX = require('../model/linuxModel');
 const ANDROID = require('../model/androidModel');
+const ALGORITHM = require('../model/algorithm');
 
 
 
@@ -39,6 +40,8 @@ const returnModel = (subject) => {
             return LINUX;
         case "android":
             return ANDROID;
+        case "algorithm":
+            return ALGORITHM;
     }
 }
 
