@@ -12,7 +12,7 @@ const pythonSchema = new mongoose.Schema({
     },
     subject: {
         type: String,
-        default: 'pythone'
+        default: 'python'
     },
     content: {
         type: String,
